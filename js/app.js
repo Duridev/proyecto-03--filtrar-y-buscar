@@ -49,6 +49,8 @@ marca.addEventListener('change', (e) =>{
  
 year.addEventListener('change', (e) =>{
     datosBusqueda.year = e.target.value;
+
+    filtrarAutos();
 });
  
 minimo.addEventListener('change', (e) =>{
@@ -105,12 +107,21 @@ function llenarSelect(){
 
 // Funcion que filtra en base a la busqueda
 function filtrarAutos() {
-    const resultado = autos.filter(filtrarMarca)
+    const resultado = autos.filter(filtrarMarca).filter(filtrarYear)
 }
 
 function filtrarMarca(auto) {
     if(datosBusqueda.marca) { // si el usuario seleccionó alguna marca
         return auto.marca === datosBusqueda.marca;
+    } else {
+        return auto;
+    }
+}
+
+function filtrarYear(auto) {
+    const { year } = datosBusqueda
+    if(year) { // si el usuario seleccionó alguna marca
+        return auto.year === parseInt(year);
     } else {
         return auto;
     }
