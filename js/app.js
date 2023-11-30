@@ -2,7 +2,7 @@
 const marca = document.querySelector('#marca')
 const year = document.querySelector('#year')
 const minimo = document.querySelector('#minimo')
-const maximo = document.querySelector('#year')
+const maximo = document.querySelector('#maximo')
 const puertas = document.querySelector('#puertas')
 const transmision = document.querySelector('#transmision')
 const color = document.querySelector('#color')
@@ -16,7 +16,7 @@ const min = max - 13;
 
 
 
-//Generar un objeto con la busqyeda
+//Generar un objeto con la busqueda
 const datosBusqueda = {
     marca : '',
     year : '',
@@ -32,7 +32,8 @@ const datosBusqueda = {
 // *************     EVENTOS     ***************************
 
 document.addEventListener('DOMContentLoaded', () => {
-    mostrarAutos(); // Muestra los autos al cargar
+
+    mostrarAutos(autos); // Muestra los autos al cargar
 
     // Llena las opciones de años
     llenarSelect();
