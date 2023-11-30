@@ -132,8 +132,12 @@ function llenarSelect() {
 function filtrarAutos() {
     const resultado = autos.filter(filtrarMarca).filter(filtrarYear).filter(filtrarMinimo).filter(filtrarMaximo).filter(filtrarPuertas).filter(filtrarTransmision).filter(filtrarColor)
 
-    mostrarAutos(resultado);
-}
+    if(resultado.length) {
+        mostrarAutos(resultado);
+    } else {
+        sinResultados();
+    };
+};
 
 //-----------
 
@@ -210,3 +214,14 @@ function filtrarColor(auto) {
         return auto;
     };
 };
+
+//-----------
+
+function sinResultados() {
+    limpiarHTML();
+
+    const sinResultado = document.createElement('div');
+    sinResultado.classList.add('alerta', 'error');
+    sinResultado.textContent = "No hay resultados que coincidan con tu búsqueda";
+    resultado.appendChild(sinResultado);
+}
